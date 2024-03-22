@@ -7,7 +7,7 @@ export default function Calculator(props){
 
     const [displayedNumber, setDisplayedNumber] = useState("");
     const [displayedExp, setDisplayedExp] = useState("");
-    const expression = new Expression();
+    let expression = new Expression();
 
     let composedNumber = 0;
     const write = (number) => {
@@ -24,21 +24,24 @@ export default function Calculator(props){
     const writeOperand = (symbol ) => {
         expression.addNumber(composedNumber);
         expression.addOperator(symbol);
-        composedNumber = null;
+        composedNumber = 0;
         setDisplayedExp(expression.toString())
         setDisplayedNumber("")
     }
 
     const evaluate = (symbol ) => {
         expression.addNumber(composedNumber);
-        composedNumber = null;
+        composedNumber = 0;
         setDisplayedExp(expression.toString())
         setDisplayedNumber(expression.evaluate())
 
     }
 
     const reset = () => {
-
+        expression = new Expression();
+        composedNumber = 0;
+        setDisplayedExp("")
+        setDisplayedNumber("")
     }
 
     return (

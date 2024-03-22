@@ -8,6 +8,9 @@
     border-radius: var(--borderRadius);
     display: flex;
     flex-direction: column;
+
+    animation: fadeIn 20s ease-in-out infinite;
+
 }
 
 .buttons{
@@ -35,6 +38,7 @@
     margin-bottom: 0;
     padding-right: 10px;
     letter-spacing: 1px;
+    height: 20px;
 }
 
 #expression{
@@ -43,4 +47,16 @@
     color: #000000ad;
     letter-spacing: 1px;
     padding-right: 10px;
+    height: 20px;
+}
+
+@keyframes fadeIn {
+    0 % {
+        /*box-shadow: none;*/
+        background-color: #61dafb;
+    }
+    100 % {
+        /*box-shadow: 4px -4px 12px -10px #6f6f6f inset, -9px 5px 12px -6px white inset, 4px -8px 12px white, -8px 4px 12px #d5d5d5d6;*/
+        background-color: #212121;
+    }
 }

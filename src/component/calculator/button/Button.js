@@ -1,12 +1,14 @@
 import './button.css';
 import KeyUtils from "../../../utils/KeyUtils";
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
+
 export default function Button(props){
 
 
     const [isActive, setIsActive] = useState(false);
     const code = props.keycode != null ? props.keycode : KeyUtils.showKeyCode(props.symbol);
-    let keyCodes = []
+    let keyCodes = [];
+    const ref = useRef(null);
 
     if (!Array.isArray(props.keycode)){
         keyCodes.push(props.keycode)
@@ -14,10 +16,12 @@ export default function Button(props){
         keyCodes = props.keycode;
     }
 
-    function use(e) {
-        props.action(props.symbol);
-    }
+
     useEffect(() => {
+        const element = ref.current;
+        function use(e) {
+            props.action(props.symbol);
+        }
         const keyDownHandler = (e) => {
             for (let i = 0; i < keyCodes.length; i++){
                 if (keyCodes[i] === e.keyCode) {
@@ -35,21 +39,32 @@ export default function Button(props){
             }
         };
 
+        const clickHandler = (e) => {
+            use();
+        }
+
+
         document.addEventListener("keydown", keyDownHandler);
         document.addEventListener("keyup", keyUpHandler);
+        element.addEventListener("click", clickHandler);
+
 
         // Nettoyage : supprimer les écouteurs d'événements lorsque le composant est démonté
         return () => {
             document.removeEventListener("keydown", keyDownHandler);
             document.removeEventListener("keyup", keyUpHandler);
+            element.removeEventListener("click", clickHandler);
         };
     }, [code]);
 
-    function handleClick(e) {
-        use();
-    }
+
 
     return (
-       <a onClick={handleClick} className={"calculatorButton "+(isActive ? "active" : "") }>{props.symbol}</a>
+       <a ref={ref}
+          className={"calculatorButton "+(isActive ? "active" : "") }>
+           {props.symbol}
+       </a>
     );
+
+
 }
