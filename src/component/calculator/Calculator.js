@@ -8,8 +8,8 @@ export default function Calculator(props){
                 <p id="expression">12+8+79+</p>
             </div>
             <div className="buttons">
-                <Button symbol="AC" special={true}/>
-                <Button symbol="<-"  special={true}/>
+                <Button symbol="AC"   special={true}/>
+                <Button symbol="<-"  keycode={8} special={true}/>
                 <Button symbol="^"  keycode={221} special={true}/>
                 <Button symbol="/" keycode={111} special={true}/>
                 <Button symbol="7"  keycode={103}/>
@@ -27,7 +27,7 @@ export default function Calculator(props){
                 <Button symbol="+/-"/>
                 <Button symbol="0" keycode={96}/>
                 <Button symbol="." keycode={[188,110]}/>
-                <Button symbol="="/>
+                <Button symbol="="  keycode={[187,13]}/>
             </div>
         </div>
     )

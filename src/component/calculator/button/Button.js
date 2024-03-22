@@ -6,17 +6,28 @@ export default function Button(props){
 
     const [isActive, setIsActive] = useState(false);
     const code = props.keycode != null ? props.keycode : KeyUtils.showKeyCode(props.symbol);
+    let keyCodes = []
+
+    if (!Array.isArray(props.keycode)){
+        keyCodes.push(props.keycode)
+    }else{
+        keyCodes = props.keycode;
+    }
 
     useEffect(() => {
         const keyDownHandler = (e) => {
-            if (code === e.keyCode) {
-                setIsActive(true);
+            for (let i = 0; i < keyCodes.length; i++){
+                if (keyCodes[i] === e.keyCode) {
+                    setIsActive(true);
+                }
             }
         };
 
         const keyUpHandler = (e) => {
-            if (code === e.keyCode) {
-                setIsActive(false);
+            for (let i = 0; i < keyCodes.length; i++){
+                if (keyCodes[i] === e.keyCode) {
+                    setIsActive(false);
+                }
             }
         };
 
