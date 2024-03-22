@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
+import './style/App.css';
+import './style/scrollbar.css'
 import Calculator from "./component/calculator/Calculator";
 import KeyUtils from "./utils/KeyUtils";
 

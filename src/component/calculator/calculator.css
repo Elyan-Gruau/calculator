@@ -3,7 +3,7 @@
     width: 260px;
     background-color: #f2f2f2;
     margin : auto;
-    box-shadow: 4px -4px 12px -10px #6f6f6f inset, -9px 5px 12px -6px white inset, 4px -8px 12px white, -8px 4px 12px #d5d5d5d6;
+    box-shadow: 4px -4px 12px -10px #6f6f6f inset, -9px 5px 12px -6px white inset, 4px -8px 12px white, -8px 4px 12px #2b242421;
     padding: 20px;
     border-radius: var(--borderRadius);
     display: flex;
@@ -47,7 +47,13 @@
     color: #000000ad;
     letter-spacing: 1px;
     padding-right: 10px;
-    height: 20px;
+    min-height: 20px;
+    width: 90%;
+    text-align: end;
+    overflow-y: auto;
+    max-height: 40px;
+    line-height: 13px;
+
 }
 
 @keyframes fadeIn {
