@@ -14,11 +14,15 @@ export default function Button(props){
         keyCodes = props.keycode;
     }
 
+    function use(e) {
+        props.action(props.symbol);
+    }
     useEffect(() => {
         const keyDownHandler = (e) => {
             for (let i = 0; i < keyCodes.length; i++){
                 if (keyCodes[i] === e.keyCode) {
                     setIsActive(true);
+                    use();
                 }
             }
         };
@@ -42,9 +46,7 @@ export default function Button(props){
     }, [code]);
 
     function handleClick(e) {
-        if (code === e.keyCode) {
-            setIsActive(current => !current);
-        }
+        use();
     }
 
     return (

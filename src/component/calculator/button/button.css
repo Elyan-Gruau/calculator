@@ -5,7 +5,12 @@
     display: flex;
     border-radius: var(--borderRadius);
 
-    box-shadow: -3px 4px 12px -10px black, 6px -4px 12px -6px white inset, 5px -8px 12px -6px white, 0px 0px 1px 0px white inset;
+    box-shadow:
+            -5px 4px 12px -10px black,
+            5px -4px 12px -6px white inset,
+            5px -8px 12px -6px white,
+            0px 0px 1px 0px white inset,
+            -2px 1px 12px -14px black inset;
     align-items: center;
     justify-content: center;
     color: #5d5d5d;
